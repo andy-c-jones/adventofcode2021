@@ -1,3 +1,9 @@
 .idea/
 *.DotSettings.user
 
+
+bin/
+obj/
+
+*.pdb
+*.dll

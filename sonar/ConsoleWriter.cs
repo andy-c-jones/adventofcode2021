@@ -1,3 +1,5 @@
+using System;
+
 namespace sonar;
 
 public interface IOutputWriter

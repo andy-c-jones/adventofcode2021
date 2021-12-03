@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace sonar;
 
 public class DepthIncreaseCalculator : IDepthIncreaseCalculator
@@ -7,13 +10,18 @@ public class DepthIncreaseCalculator : IDepthIncreaseCalculator
         var counter = 0;
         for (var i = 1; i < measurements.Length; i++)
         {
-            var previousMeasurement = measurements[i - 1];
-            var measurement = measurements[i];
-            if (measurement > previousMeasurement)
-            {
-                counter++;
-            }
+            if (i + 3 > measurements.Length)
+                return counter;
+            
+            var previousRange = measurements[new Range(i - 1, i + 2)];
+            var sumOfPreviousRange = previousRange.Sum();
+
+            var range = measurements[new Range(i, i + 3)];
+            var sumOfRange = range.Sum();
+
+            if (sumOfRange > sumOfPreviousRange) counter++;
         }
+
         return counter;
     }
 }
