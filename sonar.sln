@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sonar", "sonar\sonar.csproj", "{97BCD1E9-52B0-40FA-B60B-81ED3D01E85B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sonar.tests", "sonar.tests\sonar.tests.csproj", "{FD595D92-63DC-4F80-BF07-CEDF6A053302}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97BCD1E9-52B0-40FA-B60B-81ED3D01E85B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97BCD1E9-52B0-40FA-B60B-81ED3D01E85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97BCD1E9-52B0-40FA-B60B-81ED3D01E85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97BCD1E9-52B0-40FA-B60B-81ED3D01E85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD595D92-63DC-4F80-BF07-CEDF6A053302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD595D92-63DC-4F80-BF07-CEDF6A053302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD595D92-63DC-4F80-BF07-CEDF6A053302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD595D92-63DC-4F80-BF07-CEDF6A053302}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
