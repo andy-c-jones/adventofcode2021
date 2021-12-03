@@ -34,17 +34,17 @@ public class SubmarineTests
         Assert.That(submarine.Aim, Is.EqualTo(expected));
     }
 
-    [TestCase(1, 1, 1, 1)]
-    [TestCase(123, 1, 123, 123)]
-    [TestCase(43266, 1, 43266, 43266)]
-    [TestCase(1, 2, 1, 2)]
-    [TestCase(123, 3, 123, 369)]
-    [TestCase(43266, 4, 43266, 173064)]
+    [TestCase(1, 1, 1, 100, 101)]
+    [TestCase(123, 1, 123, 0, 123)]
+    [TestCase(43266, 1, 43266, 200, 43466)]
+    [TestCase(1, 2, 1, 450, 452)]
+    [TestCase(123, 3, 123, 100, 469)]
+    [TestCase(43266, 4, 43266, 0, 173064)]
     public void
         Executing_forward_should_increase_horizontal_position_by_value_and_increase_depth_by_aim_multiplied_by_value
-        (int value, int startingAim, int expectedHorizontal, int expectedDepth)
+        (int value, int startingAim, int expectedHorizontal, int startingDepth, int expectedDepth)
     {
-        var submarine = new sonar.Submarine.Submarine(0, 0, startingAim);
+        var submarine = new sonar.Submarine.Submarine(0, startingDepth, startingAim);
         submarine.Execute(new[] { new SubmarineCommand(CommandType.Forwards, value) });
         Assert.Multiple(() =>
         {

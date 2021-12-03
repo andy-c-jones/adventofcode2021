@@ -19,7 +19,7 @@ public class Submarine
     };
 
     private static void ExecuteForwards(Submarine submarine, int value) => submarine.Position =
-        new Position(submarine.Position.Horizontal + value, value * submarine.Aim);
+        new Position(submarine.Position.Horizontal + value, submarine.Position.Depth + value * submarine.Aim);
 
     private static void ExecuteUp(Submarine submarine, int value) => submarine.Aim -= value;
     private static void ExecuteDown(Submarine submarine, int value) => submarine.Aim += value;
