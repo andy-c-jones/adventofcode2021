@@ -24,13 +24,8 @@ public class Submarine
     private static void ExecuteUp(Submarine submarine, int value) => submarine.Aim -= value;
     private static void ExecuteDown(Submarine submarine, int value) => submarine.Aim += value;
 
-    public void Execute(IEnumerable<SubmarineCommand> commands)
-    {
-        foreach (var (commandType, value) in commands)
-        {
-            _commands[commandType].Invoke(this, value);
-        }
-    }
+    public void Execute(IEnumerable<SubmarineCommand> commands) =>
+        commands.ToList().ForEach(command => _commands[command.Type].Invoke(this, command.Value));
 }
 
 public enum CommandType
