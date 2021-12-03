@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using sonar.Sonar;
 
-namespace sonar.tests;
+namespace sonar.tests.Sonar;
 
 public class DepthIncreaseCalculatorTests
 {
