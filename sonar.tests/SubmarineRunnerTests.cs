@@ -8,9 +8,9 @@ namespace sonar.tests;
 public class SubmarineRunnerTests
 {
     [TestCase(1, 1, "1")]
-    [TestCase(2, 1, "2")]
-    [TestCase(2, 2, "4")]
-    [TestCase(10, 1231, "12310")]
+    [TestCase(2, 1, "4")]
+    [TestCase(2, 2, "8")]
+    [TestCase(10, 1231, "123100")]
     public async Task When_movesub_should_read_file_from_input_path_calculate_increases_then_write_to_output(
         int forward, int down, string expectedOutput)
     {
@@ -22,8 +22,8 @@ public class SubmarineRunnerTests
             .Setup(r => r.ReadCommandsFromFile(someFilePath))
             .Returns(Task.FromResult(new[]
             {
-                new SubmarineCommand(CommandType.Forwards, forward),
-                new SubmarineCommand(CommandType.Down, down)
+                new SubmarineCommand(CommandType.Down, down),
+                new SubmarineCommand(CommandType.Forwards, forward)
             }));
 
         var runner = new SubmarineRunner(reader.Object, writer.Object);
