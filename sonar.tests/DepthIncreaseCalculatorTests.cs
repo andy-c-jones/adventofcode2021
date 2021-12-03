@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace sonar.tests;
 
-public class Class1
+public class DepthIncreaseCalculatorTests
 {
     private static IEnumerable<(int[] measurements, int increases)> TestData()
     {
