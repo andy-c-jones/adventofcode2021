@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
-
-namespace sonar;
+namespace sonar.Sonar;
 
 public class DepthIncreaseCalculator : IDepthIncreaseCalculator
 {

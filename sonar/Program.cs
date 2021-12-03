@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using sonar.Sonar;
+using sonar.Submarine;
 
 namespace sonar;
 
@@ -11,10 +13,19 @@ public static class Program
             .AddSingleton<IDepthIncreaseCalculator, DepthIncreaseCalculator>()
             .AddSingleton<ISonarReader, SonarReader>()
             .AddSingleton<IOutputWriter, ConsoleWriter>()
+            .AddSingleton<ICommandReader, CommandReader>()
             .AddSingleton<Runner>()
+            .AddSingleton<SubmarineRunner>()
             .BuildServiceProvider();
         
-        var runner = serviceProvider.GetService<Runner>();
-        await runner?.Run(args)!;
+        switch (args[0])
+        {
+            case "sonar":
+                await serviceProvider.GetService<Runner>()?.Run(args)!;
+                break;
+            case "movesub":
+                await serviceProvider.GetService<SubmarineRunner>()?.Run(args)!;
+                break;
+        }
     }
 }

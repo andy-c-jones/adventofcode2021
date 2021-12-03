@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using sonar.Sonar;
 
 namespace sonar.tests;
 

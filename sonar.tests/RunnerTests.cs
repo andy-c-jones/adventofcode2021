@@ -1,12 +1,14 @@
 using Moq;
 using NUnit.Framework;
+using sonar.Sonar;
+using sonar.Submarine;
 
 namespace sonar.tests;
 
 public class RunnerTests
 {
     [Test]
-    public async Task Should_read_file_from_input_path_calculate_increases_then_write_to_output(
+    public async Task When_sonar_should_read_file_from_input_path_calculate_increases_then_write_to_output(
         [Values("day1Input.txt", "a", "some other")]
         string filePath,
         [Values(new[] { 1, 2 }, new[] { 1, 2, 3 }, new int[] { })]
@@ -28,8 +30,9 @@ public class RunnerTests
 
         var runner = new Runner(reader.Object, calculator.Object, writer.Object);
 
-        await runner.Run(new[] { filePath });
+        await runner.Run(new[] { "sonar", filePath });
 
         writer.Verify(w => w.WriteLine(expectedIncreaseCount.ToString()));
     }
+    
 }

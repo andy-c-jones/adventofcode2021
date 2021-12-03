@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using sonar.Sonar;
 
 namespace sonar;
 
@@ -17,7 +18,7 @@ public class Runner
     
     public async Task Run(string[] args)
     {
-        var measurementsFromFile = await _reader.ReadSonarMeasurementsFromFile(args[0]);
+        var measurementsFromFile = await _reader.ReadSonarMeasurementsFromFile(args[1]);
         var increases = _calculator.CountIncreases(measurementsFromFile);
         _outputWriter.WriteLine(increases.ToString());
     }

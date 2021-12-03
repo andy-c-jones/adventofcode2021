@@ -1,9 +1,6 @@
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace sonar;
+namespace sonar.Sonar;
 
 public class SonarReader : ISonarReader
 {
