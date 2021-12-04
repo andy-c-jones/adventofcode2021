@@ -54,4 +54,5 @@ public class DayThreeCalculator : IDayThreeCalculator
 public interface IDayThreeCalculator
 {
     int CalculatePowerConsumption(string[] input);
+    int CalculateLifeSupportRate(string[] input);
 }

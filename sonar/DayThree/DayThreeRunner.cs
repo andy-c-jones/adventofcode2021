@@ -17,6 +17,8 @@ public class DayThreeRunner
     {
         var input = await _reader.Read(args[1]);
         var powerConsumption = _calculator.CalculatePowerConsumption(input);
-        _writer.WriteLine(powerConsumption.ToString());
+        var lifeSupportRate = _calculator.CalculateLifeSupportRate(input);
+        _writer.WriteLine($"PowerConsumption: {powerConsumption.ToString()}");
+        _writer.WriteLine($"LifeSupportRate: {lifeSupportRate.ToString()}");
     }
 }
