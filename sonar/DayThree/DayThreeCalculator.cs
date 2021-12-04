@@ -5,25 +5,47 @@ public class DayThreeCalculator : IDayThreeCalculator
     public int CalculatePowerConsumption(string[] input) =>
         CalculateGammaRate(input) * CalculateEpsilonRate(input);
 
-    public int CalculateGammaRate(string[] input) => Calculate(input, Common);
-    public int CalculateEpsilonRate(string[] input) => Calculate(input, LeastCommon);
+    public int CalculateGammaRate(string[] input) => Calculate(input, OneMoreCommon);
+    public int CalculateEpsilonRate(string[] input) => Calculate(input, OnesLessCommon);
 
 
-    private static int Calculate(IReadOnlyCollection<string> input, Func<char, bool> countingFunction)
+    private static int Calculate(IReadOnlyCollection<string> input, Func<int, int, bool> func)
     {
         var result = "";
         for (var i = 0; i < (input.FirstOrDefault()?.Length ?? 1); i++)
         {
-            var column = input.Aggregate("", (current, s) => current + s[i]);
-            var count = column.Count(countingFunction);
-            result += count >= input.Count / 2 + 1 ? "1" : "0";
+            var columnAggregate = input.Aggregate("", (current, s) => current + s[i]);
+            var countOnes = columnAggregate.Count(c => c == '1');
+            var countZeros = columnAggregate.Count(c => c == '0');
+            result += func(countOnes, countZeros) ? "1" : "0";
         }
 
         return Convert.ToInt32(result, 2);
     }
 
-    private static bool Common(char c) => c == '1';
-    private static bool LeastCommon(char c) => c == '0';
+    private static bool OneMoreCommon(int countOnes, int countZeros) => countOnes > countZeros;
+    private static bool OnesLessCommon(int countOnes, int countZeros) => countOnes < countZeros;
+    
+    private static bool OneMoreCommonOrEqual(int countOnes, int countZeros) => countOnes >= countZeros;
+    private static bool OnesLessCommonOrEqual(int countOnes, int countZeros) => countOnes < countZeros;
+
+    public int CalculateOxygenGeneratorRating(string[] input) => Recur(input, 0, OneMoreCommonOrEqual);
+    public int CalculateCO2ScrubberRating(string[] input) => Recur(input, 0, OnesLessCommonOrEqual);
+
+    private static int Recur(IReadOnlyCollection<string> inputs, int col, Func<int, int, bool> compFunc)
+    {
+        var columnAggregate = inputs.Aggregate("", (current, s) => current + s[col]);
+        var countOnes = columnAggregate.Count(c => c == '1');
+        var countZeros = columnAggregate.Count(c => c == '0');
+        var mostCommonBit = compFunc(countOnes, countZeros) ? '1' : '0';
+
+        var remainingInputs = inputs.Where(i => i[col] == mostCommonBit).ToArray();
+
+        var nextCol = col + 1;
+        return remainingInputs.Length == 1 || remainingInputs.First().Length == nextCol
+            ? Convert.ToInt32(remainingInputs.First(), 2)
+            : Recur(remainingInputs, nextCol, compFunc);
+    }
 }
 
 public interface IDayThreeCalculator

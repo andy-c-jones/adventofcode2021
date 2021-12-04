@@ -66,4 +66,50 @@ public class DayThreeCalculatorTests
         var gammaRate = calculator.CalculatePowerConsumption(inputs);
         Assert.That(gammaRate, Is.EqualTo(expectedPowerConsumption));
     }
+
+    [TestCase(new[]
+    {
+        "00100",
+        "11110",
+        "10110",
+        "10111",
+        "10101",
+        "01111",
+        "00111",
+        "11100",
+        "10000",
+        "11001",
+        "00010",
+        "01010"
+    }, 23)]
+    public void oxygen_generator_rating(
+        string[] inputs, int expectedGammaRate)
+    {
+        var calculator = new DayThreeCalculator();
+        var oxygenGeneratorRating = calculator.CalculateOxygenGeneratorRating(inputs);
+        Assert.That(oxygenGeneratorRating, Is.EqualTo(expectedGammaRate));
+    }
+    
+    [TestCase(new[]
+    {
+        "00100",
+        "11110",
+        "10110",
+        "10111",
+        "10101",
+        "01111",
+        "00111",
+        "11100",
+        "10000",
+        "11001",
+        "00010",
+        "01010"
+    }, 10)]
+    public void co2_scrubber_rating(
+        string[] inputs, int expectedRating)
+    {
+        var calculator = new DayThreeCalculator();
+        var rating = calculator.CalculateCO2ScrubberRating(inputs);
+        Assert.That(rating, Is.EqualTo(expectedRating));
+    }
 }
