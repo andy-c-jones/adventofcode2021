@@ -12,7 +12,7 @@ public class DayThreeCalculator : IDayThreeCalculator
     private static int Calculate(IReadOnlyCollection<string> input, Func<char, bool> countingFunction)
     {
         var result = "";
-        for (var i = 0; i < 5; i++)
+        for (var i = 0; i < (input.FirstOrDefault()?.Length ?? 1); i++)
         {
             var column = input.Aggregate("", (current, s) => current + s[i]);
             var count = column.Count(countingFunction);

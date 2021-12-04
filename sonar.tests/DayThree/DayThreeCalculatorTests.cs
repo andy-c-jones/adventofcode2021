@@ -58,6 +58,8 @@ public class DayThreeCalculatorTests
 
     [TestCase(new[] {"00001", "00001", "00001"}, 30)]
     [TestCase(new[] {"00010", "00010", "00010"}, 58)]
+    [TestCase(new[] {"0001000010", "0001000010", "0001000010"}, 63162)]
+    [TestCase(new[] {"000100010", "000100010", "000100010"}, 16218)]
     public void Power_consumption_should_be_gamma_rate_times_epsilon_rate(string[] inputs, int expectedPowerConsumption)
     {
         var calculator = new DayThreeCalculator();
