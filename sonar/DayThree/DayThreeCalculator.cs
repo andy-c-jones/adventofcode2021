@@ -4,6 +4,9 @@ public class DayThreeCalculator : IDayThreeCalculator
 {
     public int CalculatePowerConsumption(string[] input) =>
         CalculateGammaRate(input) * CalculateEpsilonRate(input);
+    
+    public int CalculateLifeSupportRate(string[] input) =>
+        CalculateOxygenGeneratorRating(input) * CalculateCO2ScrubberRating(input);
 
     public int CalculateGammaRate(string[] input) => Calculate(input, OneMoreCommon);
     public int CalculateEpsilonRate(string[] input) => Calculate(input, OnesLessCommon);
