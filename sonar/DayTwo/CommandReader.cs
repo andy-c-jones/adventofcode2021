@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace sonar.Submarine;
+namespace sonar.DayTwo;
 
 public class CommandReader : ICommandReader
 {

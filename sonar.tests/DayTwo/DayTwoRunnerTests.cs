@@ -1,8 +1,8 @@
 using Moq;
 using NUnit.Framework;
-using sonar.Submarine;
+using sonar.DayTwo;
 
-namespace sonar.tests;
+namespace sonar.tests.DayTwo;
 
 [TestFixture]
 public class SubmarineRunnerTests
@@ -26,7 +26,7 @@ public class SubmarineRunnerTests
                 new SubmarineCommand(CommandType.Forwards, forward)
             }));
 
-        var runner = new SubmarineRunner(reader.Object, writer.Object);
+        var runner = new DayTwoRunner(reader.Object, writer.Object);
 
         await runner.Run(new[] { "movesub", someFilePath });
 

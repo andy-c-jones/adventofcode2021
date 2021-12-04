@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace sonar.Sonar;
+namespace sonar.DayOne;
 
 public class SonarReader : ISonarReader
 {

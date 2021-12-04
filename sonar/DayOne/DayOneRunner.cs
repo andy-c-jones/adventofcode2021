@@ -1,15 +1,12 @@
-using System.Threading.Tasks;
-using sonar.Sonar;
+namespace sonar.DayOne;
 
-namespace sonar;
-
-public class Runner
+public class DayOneRunner
 {
     private readonly ISonarReader _reader;
     private readonly IDepthIncreaseCalculator _calculator;
     private readonly IOutputWriter _outputWriter;
 
-    public Runner(ISonarReader reader, IDepthIncreaseCalculator calculator, IOutputWriter outputWriter)
+    public DayOneRunner(ISonarReader reader, IDepthIncreaseCalculator calculator, IOutputWriter outputWriter)
     {
         _reader = reader;
         _calculator = calculator;

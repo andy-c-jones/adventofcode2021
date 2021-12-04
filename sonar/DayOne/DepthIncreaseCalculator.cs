@@ -1,4 +1,4 @@
-namespace sonar.Sonar;
+namespace sonar.DayOne;
 
 public class DepthIncreaseCalculator : IDepthIncreaseCalculator
 {

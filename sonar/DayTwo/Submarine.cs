@@ -1,4 +1,4 @@
-namespace sonar.Submarine;
+namespace sonar.DayTwo;
 
 public class Submarine
 {

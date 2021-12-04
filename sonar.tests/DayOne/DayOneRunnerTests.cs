@@ -1,9 +1,8 @@
 using Moq;
 using NUnit.Framework;
-using sonar.Sonar;
-using sonar.Submarine;
+using sonar.DayOne;
 
-namespace sonar.tests;
+namespace sonar.tests.DayOne;
 
 public class RunnerTests
 {
@@ -28,7 +27,7 @@ public class RunnerTests
             .Setup(c => c.CountIncreases(expectedReaderInput))
             .Returns(expectedIncreaseCount);
 
-        var runner = new Runner(reader.Object, calculator.Object, writer.Object);
+        var runner = new DayOneRunner(reader.Object, calculator.Object, writer.Object);
 
         await runner.Run(new[] { "sonar", filePath });
 
