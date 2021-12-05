@@ -2,24 +2,6 @@
 
 public class Board : IBoard
 {
-    protected bool Equals(Board other)
-    {
-        return Grid.Equals(other.Grid);
-    }
-
-    public override bool Equals(object? obj)
-    {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
-        return Equals((Board) obj);
-    }
-
-    public override int GetHashCode()
-    {
-        return Grid.GetHashCode();
-    }
-
     public Board(GridItem[,] grid)
     {
         Grid = grid;
@@ -27,18 +9,24 @@ public class Board : IBoard
 
     public GridItem[,] Grid { get; private set; }
 
+    GridItem[,] IBoard.Grid() => Grid;
+
     public void MarkNumber(int number)
     {
     }
 
-    public (bool, int sumOfUnmarkedNumbers) HasBoardWon()
+    public bool HasBoardWon()
     {
-        return (false, 0);
+        return false;
     }
+    
+    public int SumOfUnmarkedNumbers() => 0;
 }
 
 public interface IBoard
 {
+    GridItem[,] Grid();   
     void MarkNumber(int number);
-    (bool, int sumOfUnmarkedNumbers) HasBoardWon();
+    bool HasBoardWon();
+    int SumOfUnmarkedNumbers();
 }

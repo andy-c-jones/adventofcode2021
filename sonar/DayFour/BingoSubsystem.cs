@@ -2,6 +2,11 @@
 
 public class BingoSubsystem : IBingoSubsystem
 {
+    public BingoSubsystem(IRoundExecutor roundExecutor)
+    {
+        
+    }
+    
     public int DrawNumbersUntilThereIsAWinner(BingoGameData data)
     {
         int lastNumber = 1;

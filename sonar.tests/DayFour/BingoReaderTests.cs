@@ -53,7 +53,7 @@ public class BingoReaderTests
         });
     }
 
-    private static void AssertBoard(int boardNumber, Board[] boards, Board board)
+    private static void AssertBoard(int boardNumber, IReadOnlyList<IBoard> boards, IBoard board)
     {
         AssertRow(0,boardNumber, boards, board);
         AssertRow(1,boardNumber, boards, board);
@@ -62,13 +62,13 @@ public class BingoReaderTests
         AssertRow(4,boardNumber, boards, board);
     }
 
-    private static void AssertRow(int rowNumber, int i, Board[] boards, Board board)
+    private static void AssertRow(int rowNumber, int i, IReadOnlyList<IBoard> boards, IBoard board)
     {
-        Assert.That(boards[i].Grid[rowNumber, 0], Is.EqualTo(board.Grid[rowNumber, 0]));
-        Assert.That(boards[i].Grid[rowNumber, 1], Is.EqualTo(board.Grid[rowNumber, 1]));
-        Assert.That(boards[i].Grid[rowNumber, 2], Is.EqualTo(board.Grid[rowNumber, 2]));
-        Assert.That(boards[i].Grid[rowNumber, 3], Is.EqualTo(board.Grid[rowNumber, 3]));
-        Assert.That(boards[i].Grid[rowNumber, 4], Is.EqualTo(board.Grid[rowNumber, 4]));
+        Assert.That(boards[i].Grid()[rowNumber, 0], Is.EqualTo(board.Grid()[rowNumber, 0]));
+        Assert.That(boards[i].Grid()[rowNumber, 1], Is.EqualTo(board.Grid()[rowNumber, 1]));
+        Assert.That(boards[i].Grid()[rowNumber, 2], Is.EqualTo(board.Grid()[rowNumber, 2]));
+        Assert.That(boards[i].Grid()[rowNumber, 3], Is.EqualTo(board.Grid()[rowNumber, 3]));
+        Assert.That(boards[i].Grid()[rowNumber, 4], Is.EqualTo(board.Grid()[rowNumber, 4]));
     }
 
     GridItem Item(int number) => new(number, false);

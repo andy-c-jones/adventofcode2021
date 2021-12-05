@@ -20,6 +20,7 @@ public static class Program
             .AddSingleton<IDayThreeReader, DayThreeReader>()
             .AddSingleton<IBingoReader, BingoReader>()
             .AddSingleton<IBingoSubsystem, BingoSubsystem>()
+            .AddSingleton<IRoundExecutor, RoundExecutor>()
             .AddSingleton<DayOneRunner>()
             .AddSingleton<DayTwoRunner>()
             .AddSingleton<DayThreeRunner>()
