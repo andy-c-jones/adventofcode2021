@@ -45,7 +45,7 @@ public class BoardTests
         });
     }
 
-    public IEnumerable<Board> RowWinningBoards()
+    public static IEnumerable<Board> RowWinningBoards()
     {
         yield return new Board(new[,]
         {
@@ -67,9 +67,9 @@ public class BoardTests
 
     [TestCaseSource(nameof(RowWinningBoards))]
     public void When_checking_if_board_has_won_and_a_row_is_all_marked(Board board) => 
-        Assert.That(board.HasBoardWon, Is.True);
+        Assert.That(board.HasBoardWon(), Is.True);
 
-    public IEnumerable<Board> ColumnWinningBoards()
+    public static IEnumerable<Board> ColumnWinningBoards()
     {
         yield return new Board(new[,]
         {
@@ -101,7 +101,7 @@ public class BoardTests
 
     [TestCaseSource(nameof(ColumnWinningBoards))]
     public void When_checking_if_board_has_won_and_a_column_is_all_marked(Board board) => 
-        Assert.That(board.HasBoardWon, Is.True);
+        Assert.That(board.HasBoardWon(), Is.True);
 
     private static GridItem Item(int number) => new(number, false);
     private static GridItem MarkedItem(int number) => new(number, true);

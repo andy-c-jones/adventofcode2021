@@ -2,7 +2,7 @@
 
 public class RoundExecutor : IRoundExecutor
 {
-    public (bool, IBoard? winningBoard) Execute(int number, IEnumerable<IBoard> boards)
+    public (bool win, IBoard? winningBoard) Execute(int number, IEnumerable<IBoard> boards)
     {
         var boardsAsList = boards.ToList();
         boardsAsList.ForEach(b => b.MarkNumber(number));
@@ -13,5 +13,5 @@ public class RoundExecutor : IRoundExecutor
 
 public interface IRoundExecutor
 {
-    public (bool, IBoard? winningBoard) Execute(int number, IEnumerable<IBoard> boards);
+    public (bool win, IBoard? winningBoard) Execute(int number, IEnumerable<IBoard> boards);
 }
