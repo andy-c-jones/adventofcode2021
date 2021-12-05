@@ -20,3 +20,6 @@ To move a submarine:
 ## Day Three
 `dotnet sonar/bin/Debug/net6.0/sonar.dll day3 "./sonar/bin/Debug/net6.0/day3Input.txt"`
 
+## Day Four
+`dotnet sonar/bin/Debug/net6.0/sonar.dll day4 "./sonar/bin/Debug/net6.0/day4Input.txt"`
+
