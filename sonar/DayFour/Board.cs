@@ -13,6 +13,10 @@ public class Board : IBoard
 
     public void MarkNumber(int number)
     {
+        foreach (var item in Grid)
+        {
+            if (item.Number == number) item.Marked = true;
+        }
     }
 
     public bool HasBoardWon()

@@ -50,4 +50,32 @@ public interface IBingoReader
 
 public record BingoGameData(IEnumerable<int> NumbersToDraw, IEnumerable<IBoard> Boards);
 
-public record GridItem(int Number, bool Marked);
+public class GridItem
+{
+    protected bool Equals(GridItem other)
+    {
+        return Number == other.Number && Marked == other.Marked;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        if (ReferenceEquals(this, obj)) return true;
+        if (obj.GetType() != this.GetType()) return false;
+        return Equals((GridItem) obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Number, Marked);
+    }
+
+    public int Number { get; }
+    public bool Marked { get; set; }
+
+    public GridItem(int number, bool marked)
+    {
+        Number = number;
+        Marked = marked;
+    }
+};
