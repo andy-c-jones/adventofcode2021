@@ -18,7 +18,7 @@ public class BingoReader : IBingoReader
         {
             var boardNumber = i + 1;
             var lastLineOfBoard = 6 * boardNumber;
-            var firstLineOfBoard = lastLineOfBoard - 4;
+            var firstLineOfBoard = lastLineOfBoard - 5;
             var boardInputs = boards.Take(new Range(firstLineOfBoard, lastLineOfBoard)).ToArray();
 
             var items = new GridItem[5, 5];
