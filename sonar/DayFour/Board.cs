@@ -2,12 +2,12 @@
 
 public class Board : IBoard
 {
-    public Board(GridItem[][] grid)
+    public Board(GridItem[,] grid)
     {
         Grid = grid;
     }
 
-    public GridItem[][] Grid { get; private set; }
+    public GridItem[,] Grid { get; private set; }
 
     public void MarkNumber(int number)
     {
