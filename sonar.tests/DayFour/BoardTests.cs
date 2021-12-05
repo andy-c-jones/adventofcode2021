@@ -66,7 +66,7 @@ public class BoardTests
     }
 
     [TestCaseSource(nameof(RowWinningBoards))]
-    public void When_checking_if_board_has_won_and_a_row_is_all_marked(Board board) => 
+    public void When_checking_if_board_has_won_and_a_row_is_all_marked(Board board) =>
         Assert.That(board.HasBoardWon(), Is.True);
 
     public static IEnumerable<Board> ColumnWinningBoards()
@@ -100,8 +100,43 @@ public class BoardTests
     }
 
     [TestCaseSource(nameof(ColumnWinningBoards))]
-    public void When_checking_if_board_has_won_and_a_column_is_all_marked(Board board) => 
+    public void When_checking_if_board_has_won_and_a_column_is_all_marked(Board board) =>
         Assert.That(board.HasBoardWon(), Is.True);
+
+    [TestCase(1, 43, 44)]
+    [TestCase(1312, 346, 1658)]
+    [TestCase(4234, 13232, 17466)]
+    public void SumOfUnmarkedNumbers_should_be_equal_to_all_unmarked_item_numbers_summed_small(int unmarkedOne,
+        int unmarkedTwo, int expectedResult)
+    {
+        var board = new Board(new[,]
+        {
+            {MarkedItem(231), Item(unmarkedTwo)},
+            {Item(unmarkedOne), MarkedItem(10)}
+        });
+
+        Assert.That(board.SumOfUnmarkedNumbers(), Is.EqualTo(expectedResult));
+    }
+
+    [TestCase(1, 43, 44, 88)]
+    [TestCase(1312, 346, 44, 1702)]
+    [TestCase(4234, 13232, 44, 17510)]
+    public void SumOfUnmarkedNumbers_should_be_equal_to_all_unmarked_item_numbers_summed_large(
+        int unmarkedOne,
+        int unmarkedTwo,
+        int unmarkedThree,
+        int expectedResult)
+    {
+        var board = new Board(new[,]
+        {
+            {MarkedItem(231), Item(unmarkedTwo), MarkedItem(231), MarkedItem(231), MarkedItem(231)},
+            {Item(unmarkedOne), MarkedItem(10), MarkedItem(231), MarkedItem(231), MarkedItem(231)},
+            {MarkedItem(231), MarkedItem(10), MarkedItem(231), MarkedItem(231), MarkedItem(231)},
+            {MarkedItem(132), MarkedItem(10), Item(unmarkedThree), MarkedItem(231), MarkedItem(231)}
+        });
+
+        Assert.That(board.SumOfUnmarkedNumbers(), Is.EqualTo(expectedResult));
+    }
 
     private static GridItem Item(int number) => new(number, false);
     private static GridItem MarkedItem(int number) => new(number, true);

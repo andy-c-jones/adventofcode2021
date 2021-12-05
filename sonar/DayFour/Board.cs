@@ -63,7 +63,10 @@ public class Board : IBoard
         return false;
     }
 
-    public int SumOfUnmarkedNumbers() => 0;
+    public int SumOfUnmarkedNumbers() => Grid.Cast<GridItem?>()
+        .Where(item => !item!.Marked)
+        .Select(item => item!.Number)
+        .Sum();
 }
 
 public interface IBoard

@@ -15,6 +15,7 @@ public class DayFourRunnerTests
 
         var gameData = new BingoGameData(Array.Empty<int>(), Array.Empty<Board>());
         const int expectedGameResult = 321;
+        const int expectedLastBoardToWinGameResult = 4232;
         const string filePath = "someFilePath";
 
         reader.Setup(r => r.ReadFrom(filePath))
@@ -23,9 +24,13 @@ public class DayFourRunnerTests
         bingoSubsystem.Setup(b => b.DrawNumbersUntilThereIsAWinner(gameData))
             .Returns(expectedGameResult);
         
+        bingoSubsystem.Setup(b => b.FindTheLastBoardToWin(gameData))
+            .Returns(expectedLastBoardToWinGameResult);
+        
         var runner = new DayFourRunner(reader.Object, bingoSubsystem.Object, writer.Object);
         await runner.Run(new[] {"day4", filePath });
         
         writer.Verify(w => w.WriteLine($"Part 1 Score: {expectedGameResult.ToString()}"));
+        writer.Verify(w => w.WriteLine($"Part 2 Score: {expectedLastBoardToWinGameResult.ToString()}"));
     }
 }

@@ -16,7 +16,9 @@ public class DayFourRunner
     public async Task Run(string[] args)
     {
         var data = await _reader.ReadFrom(args[1]);
-        var score = _bingoSubsystem.DrawNumbersUntilThereIsAWinner(data);
-        _writer.WriteLine($"Part 1 Score: {score.ToString()}");
+        _writer.WriteLine($"Part 1 Score: {_bingoSubsystem.DrawNumbersUntilThereIsAWinner(data).ToString()}");
+        
+        var dataTwo = await _reader.ReadFrom(args[1]);
+        _writer.WriteLine($"Part 2 Score: {_bingoSubsystem.FindTheLastBoardToWin(dataTwo).ToString()}");
     }
 }
