@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using sonar.DayFive;
 using sonar.DayFour;
 using sonar.DayOne;
 using sonar.DayThree;
@@ -25,6 +26,7 @@ public static class Program
             .AddSingleton<DayTwoRunner>()
             .AddSingleton<DayThreeRunner>()
             .AddSingleton<DayFourRunner>()
+            .AddSingleton<DayFiveRunner>()
             .BuildServiceProvider();
         
         switch (args[0])
@@ -40,6 +42,9 @@ public static class Program
                 break;            
             case "day4":
                 await serviceProvider.GetService<DayFourRunner>()?.Run(args)!;
+                break;
+            case "day5":
+                await serviceProvider.GetService<DayFiveRunner>()?.Run(args)!;
                 break;
         }
     }
