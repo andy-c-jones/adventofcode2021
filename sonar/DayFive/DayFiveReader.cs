@@ -13,7 +13,7 @@ public class DayFiveReader : IDayFiveReader
 
         return fileLines
             .Select(fileLine => _lineRegex.Split(fileLine)
-                .Where(s => s.Length > 0).Select(int.Parse)
+                .Where(s => !string.IsNullOrWhiteSpace(s)).Select(int.Parse)
                 .ToArray())
             .Select(values => new Line(new Point(values[0], values[1]), new Point(values[2], values[3])))
             .ToArray();
