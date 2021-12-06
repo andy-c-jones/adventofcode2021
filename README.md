@@ -11,15 +11,15 @@ Run `./precommit.sh`
 
 ## Day One
 To calculate depth increases:
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day1 "./sonar/bin/Debug/net6.0/day1Input.txt"`
+`dotnet sonar/bin/Debug/net6.0/sonar.dll day1 "./sonar/bin/Debug/net6.0/Inputs/day1Input.txt"`
 
 ## Day Two
 To move a submarine:
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day2 "./sonar/bin/Debug/net6.0/day2Input.txt"`
+`dotnet sonar/bin/Debug/net6.0/sonar.dll day2 "./sonar/bin/Debug/net6.0/Inputs/day2Input.txt"`
 
 ## Day Three
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day3 "./sonar/bin/Debug/net6.0/day3Input.txt"`
+`dotnet sonar/bin/Debug/net6.0/sonar.dll day3 "./sonar/bin/Debug/net6.0/Inputs/day3Input.txt"`
 
 ## Day Four
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day4 "./sonar/bin/Debug/net6.0/day4Input.txt"`
+`dotnet sonar/bin/Debug/net6.0/sonar.dll day4 "./sonar/bin/Debug/net6.0/Inputs/day4Input.txt"`
 
