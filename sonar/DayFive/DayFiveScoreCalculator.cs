@@ -7,17 +7,19 @@ public interface IDayFiveScoreCalculator
 
 public class DayFiveScoreCalculator : IDayFiveScoreCalculator
 {
-    public int CountWhereThereAreXOrGreaterVents(int x, Node[,] map)
+    public int CountWhereThereAreXOrGreaterVents(int x, Node[,] map) => map.Flatten().Count(n => n.NumberOfVents >= x);
+}
+
+public static class ArrayExtensions
+{
+    public static IEnumerable<T> Flatten<T>(this T[,] array)
     {
-        var nodes = new List<Node>();
-        for (var i = 0; i < map.GetLength(0); i++)
+        for (var i = 0; i < array.GetLength(0); i++)
         {
-            for (var j = 0; j < map.GetLength(1); j++)
+            for (var j = 0; j < array.GetLength(1); j++)
             {
-                nodes.Add(map[i, j]);
+                yield return array[i, j];
             }
         }
-
-        return nodes.Count(n => n.NumberOfVents >= x);
     }
 }
