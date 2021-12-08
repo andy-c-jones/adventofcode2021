@@ -20,24 +20,28 @@ public class DayFiveRunner
 
     public async Task Run(string[] args)
     {
-        // var lines = await _reader.ReadLinesFrom(args[1]);
-        // var straightLines = _straightLineFilter.SelectStraightLines(lines);
-        // var map = _generator.CreateMap(straightLines);
-        // var count = _calculator.CountWhereThereAreXOrGreaterVents(2, map);
-        // _writer.WriteLine($"Part One: {count.ToString()}");
+        var lines = await _reader.ReadLinesFrom(args[1]);
+        var straightLines = _straightLineFilter.SelectStraightLines(lines);
+        var map = _generator.CreateMap(straightLines);
+        var count = _calculator.CountWhereThereAreXOrGreaterVents(2, map);
+        _writer.WriteLine($"Part One: {count.ToString()}");
 
         var lines2 = await _reader.ReadLinesFrom(args[1]);
         var map2 = _generator.CreateMap(lines2);
         var count2 = _calculator.CountWhereThereAreXOrGreaterVents(2, map2);
         _writer.WriteLine($"Part Two: {count2.ToString()}");
 
-        for (int x = 0; x < map2.GetLength(0); x++)
+        //drawing small examples to understand bug
+        if (map2.GetLength(0) < 80)
         {
-            for (int y = 0; y< map2.GetLength(1); y++)
+            for (int x = 0; x < map2.GetLength(0); x++)
             {
-                Console.Write(map2[y, x].NumberOfVents);
+                for (int y = 0; y< map2.GetLength(1); y++)
+                {
+                    Console.Write(map2[y, x].NumberOfVents);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
         }
     }
 }
