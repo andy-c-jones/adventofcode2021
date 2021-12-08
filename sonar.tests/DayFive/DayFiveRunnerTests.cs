@@ -35,7 +35,7 @@ public class DayFiveRunnerTests
 
         filter.Setup(f => f.SelectStraightLines(expectedLines)).Returns(expectedStraightLines);
 
-        var map = new Map();
+        var map = new Node[0,0];
         mapGen.Setup(g => g.CreateMap(expectedStraightLines)).Returns(map);
 
         scoreCalculator.Setup(c => c.CountWhereThereAreXVents(2, map)).Returns(expectedPartOneScore);

@@ -2,5 +2,10 @@
 
 public interface IDayFiveMapGenerator
 {
-    Map CreateMap(Line[] lines);
+    Node[,] CreateMap(IEnumerable<Line> lines);
+}
+
+public class DayFiveMapGenerator : IDayFiveMapGenerator
+{
+    public Node[,] CreateMap(IEnumerable<Line> lines) => Map.InitialiseFromLines(lines);
 }
