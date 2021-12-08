@@ -38,7 +38,7 @@ public class DayFiveRunnerTests
         var map = new Node[0,0];
         mapGen.Setup(g => g.CreateMap(expectedStraightLines)).Returns(map);
 
-        scoreCalculator.Setup(c => c.CountWhereThereAreXVents(2, map)).Returns(expectedPartOneScore);
+        scoreCalculator.Setup(c => c.CountWhereThereAreXOrGreaterVents(2, map)).Returns(expectedPartOneScore);
 
         var runner = new DayFiveRunner(reader.Object, filter.Object, mapGen.Object, scoreCalculator.Object,
             writer.Object);

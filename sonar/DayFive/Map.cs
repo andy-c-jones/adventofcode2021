@@ -24,12 +24,13 @@ public static class Map
 
     private static IEnumerable<Point> CreateListOfLineCoordinates(Point lineStart, Point lineEnd)
     {
+        var points = new List<Point>();
         if (lineStart.X <= lineEnd.X && lineStart.Y <= lineEnd.Y)
             for (var x = lineStart.X; x <= lineEnd.X; x++)
             {
                 for (var y = lineStart.Y; y <= lineEnd.Y; y++)
                 {
-                    yield return new Point(x, y);
+                    points.Add(new Point(x, y));
                 }
             }
         else if (lineStart.X >= lineEnd.X && lineStart.Y <= lineEnd.Y)
@@ -38,7 +39,7 @@ public static class Map
             {
                 for (var y = lineStart.Y; y <= lineEnd.Y; y++)
                 {
-                    yield return new Point(x, y);
+                    points.Add(new Point(x, y));
                 }
             }
         }
@@ -48,7 +49,7 @@ public static class Map
             {
                 for (var y = lineEnd.Y; y <= lineStart.Y; y++)
                 {
-                    yield return new Point(x, y);
+                    points.Add(new Point(x, y));
                 }
             }
         }
@@ -58,10 +59,12 @@ public static class Map
             {
                 for (var y = lineEnd.Y; y <= lineStart.Y; y++)
                 {
-                    yield return new Point(x, y);
+                    points.Add(new Point(x, y));
                 }
             }
         }
+
+        return points;
     }
 }
 

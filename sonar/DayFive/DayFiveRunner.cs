@@ -23,7 +23,7 @@ public class DayFiveRunner
         var lines = await _reader.ReadLinesFrom(args[1]);
         var straightLines = _straightLineFilter.SelectStraightLines(lines);
         var map = _generator.CreateMap(straightLines);
-        var count = _calculator.CountWhereThereAreXVents(2, map);
+        var count = _calculator.CountWhereThereAreXOrGreaterVents(2, map);
         _writer.WriteLine($"Part One: {count.ToString()}");
     }
 }

@@ -2,12 +2,12 @@
 
 public interface IDayFiveScoreCalculator
 {
-    int CountWhereThereAreXVents(int x, Node[,] map);
+    int CountWhereThereAreXOrGreaterVents(int x, Node[,] map);
 }
 
 public class DayFiveScoreCalculator : IDayFiveScoreCalculator
 {
-    public int CountWhereThereAreXVents(int x, Node[,] map)
+    public int CountWhereThereAreXOrGreaterVents(int x, Node[,] map)
     {
         var nodes = new List<Node>();
         for (var i = 0; i < map.GetLength(0); i++)
@@ -18,6 +18,6 @@ public class DayFiveScoreCalculator : IDayFiveScoreCalculator
             }
         }
 
-        return nodes.Count(n => n.NumberOfVents == x);
+        return nodes.Count(n => n.NumberOfVents >= x);
     }
 }

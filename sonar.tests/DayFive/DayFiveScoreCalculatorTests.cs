@@ -6,7 +6,7 @@ namespace sonar.tests.DayFive;
 public class DayFiveScoreCalculatorTests
 {
     [Test]
-    public void Should_could_the_number_of_points_where_vents_are_equal_to_x()
+    public void Should_could_the_number_of_points_where_vents_are_equal_or_greater_than_x()
     {
         var calculator = new DayFiveScoreCalculator();
 
@@ -23,11 +23,11 @@ public class DayFiveScoreCalculatorTests
 
         Assert.Multiple(() =>
         {
-            Assert.That(calculator.CountWhereThereAreXVents(0, map), Is.EqualTo(2));
-            Assert.That(calculator.CountWhereThereAreXVents(1, map), Is.EqualTo(4));
-            Assert.That(calculator.CountWhereThereAreXVents(2, map), Is.EqualTo(1));
-            Assert.That(calculator.CountWhereThereAreXVents(3, map), Is.EqualTo(2));
-            Assert.That(calculator.CountWhereThereAreXVents(4, map), Is.EqualTo(0));
+            Assert.That(calculator.CountWhereThereAreXOrGreaterVents(0, map), Is.EqualTo(9));
+            Assert.That(calculator.CountWhereThereAreXOrGreaterVents(1, map), Is.EqualTo(7));
+            Assert.That(calculator.CountWhereThereAreXOrGreaterVents(2, map), Is.EqualTo(3));
+            Assert.That(calculator.CountWhereThereAreXOrGreaterVents(3, map), Is.EqualTo(2));
+            Assert.That(calculator.CountWhereThereAreXOrGreaterVents(4, map), Is.EqualTo(0));
         });
         
     }
