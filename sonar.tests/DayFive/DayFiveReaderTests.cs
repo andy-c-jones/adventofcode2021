@@ -22,7 +22,7 @@ public class DayFiveReaderTests
             new Line(new Point(0, 9), new Point(2, 9)),
             new Line(new Point(3, 4), new Point(1, 4)),
             new Line(new Point(0, 0), new Point(8, 8)),
-            new Line(new Point(5, 5), new Point(8, 2))
+            new Line(new Point(55, 55), new Point(85, 25))
             
         }, lines);
     }

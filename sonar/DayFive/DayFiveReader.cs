@@ -5,7 +5,7 @@ namespace sonar.DayFive;
 
 public class DayFiveReader : IDayFiveReader
 {
-    private readonly Regex _lineRegex = new(@"^(\d),(\d)\s->\s(\d),(\d)$", RegexOptions.Compiled);
+    private readonly Regex _lineRegex = new(@"^(\d+),(\d+)\s->\s(\d+),(\d+)$", RegexOptions.Compiled);
 
     public async Task<Line[]> ReadLinesFrom(string filePath)
     {
