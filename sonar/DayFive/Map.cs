@@ -17,19 +17,7 @@ public static class Map
             map[index0, index1] = new Node();
         }
 
-        foreach (var point in linePoints)
-        {
-            try
-            {
-                map[point.X, point.Y].NumberOfVents += 1;
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-        }
+        foreach (var point in linePoints) map[point.X, point.Y].NumberOfVents += 1;
 
         return map;
     }
@@ -38,28 +26,11 @@ public static class Map
     {
         if (LineIsDiagonal(lineStart, lineEnd))
         {
-            foreach (var point in CalculatePointsOnADiagonalLine(lineStart, lineEnd))
-            {
-                if (point.X < 0 || point.Y < 0)
-                {
-                    throw new Exception();
-                    
-                }
-                yield return point;
-            }
-                
+            foreach (var point in CalculatePointsOnADiagonalLine(lineStart, lineEnd)) yield return point;
         }
         else
         {
-            foreach (var point in CalculatePointsOnAStraightLine(lineStart, lineEnd))
-            {
-                if (point.X < 0 || point.Y < 0)
-                {
-                    throw new Exception();
-                    
-                }
-                yield return point;
-            }
+            foreach (var point in CalculatePointsOnAStraightLine(lineStart, lineEnd)) yield return point;
         }
     }
 
