@@ -38,65 +38,91 @@ public static class Map
     {
         if (lineStart.X == lineStart.Y && lineEnd.X == lineEnd.Y)
         {
-            for (var x = lineStart.X; x <= lineEnd.X; x++)
+            if (lineStart.X <= lineEnd.X)
             {
-                yield return new Point(x, x);
-            }
-        }
-        else
-        {
-            if (lineStart.X > lineStart.Y)
-            {
-                var difference = lineStart.X - lineStart.Y;
-                for (var x = 0; x <= difference; x++)
+                for (var x = lineStart.X; x <= lineEnd.X; x++)
                 {
-                    var newX = lineStart.X - x;
-                    var neY = lineStart.Y + x;
-                    yield return new Point(newX, neY);
+                    yield return new Point(x, x);
                 }
             }
             else
             {
-                var difference = lineStart.Y - lineStart.X;
+                for (var x = lineStart.X; x >= lineEnd.X; x--)
+                {
+                    yield return new Point(x, x);
+                }
+            }
+        }
+        else
+        {
+            if (lineStart.X > lineEnd.X)
+            {
+                var difference = lineStart.X - lineEnd.X;
                 for (var x = 0; x <= difference; x++)
                 {
-                    yield return new Point(lineStart.X + x, lineStart.Y - x);
+                    if (lineStart.Y > lineEnd.Y)
+                    {
+                        var newX = lineStart.X - x;
+                        var newY = lineStart.Y - x;
+                        yield return new Point(newX, newY);
+                    }
+                    else
+                    {
+                        var newX = lineStart.X - x;
+                        var newY = lineStart.Y + x;
+                        yield return new Point(newX, newY);
+                    }
+                }
+            }
+            else
+            {
+                var difference = lineEnd.X - lineStart.X;
+                for (var x = 0; x <= difference; x++)
+                {
+                    var newX = lineStart.X + x;
+                    var newY = lineStart.Y - x;
+                    yield return new Point(newX, newY);
                 }
             }
         }
     }
 
     private static bool LineIsDiagonal(Point lineStart, Point lineEnd) =>
-        lineStart.X == lineStart.Y && lineEnd.X == lineEnd.Y
-        || lineStart.X == lineEnd.Y && lineStart.Y == lineEnd.X;
+        Math.Abs(lineStart.X - lineEnd.X) == Math.Abs(lineStart.Y - lineEnd.Y);
 
     private static IEnumerable<Point> CalculatePointsOnAStraightLine(Point lineStart, Point lineEnd)
     {
-        if (lineStart.X <= lineEnd.X && lineStart.Y <= lineEnd.Y)
-            for (var x = lineStart.X; x <= lineEnd.X; x++)
+        if (lineStart.X == lineEnd.X)
+        {
+            if (lineStart.Y <= lineEnd.Y)
             {
                 for (var y = lineStart.Y; y <= lineEnd.Y; y++)
                 {
-                    yield return new Point(x, y);
+                    yield return new Point(lineStart.X, y);
                 }
             }
-        else if (lineStart.X >= lineEnd.X && lineStart.Y <= lineEnd.Y)
-        {
-            for (var x = lineEnd.X; x <= lineStart.X; x++)
+            else
             {
-                for (var y = lineStart.Y; y <= lineEnd.Y; y++)
+                for (var y = lineStart.Y; y >= lineEnd.Y; y--)
                 {
-                    yield return new Point(x, y);
+                    yield return new Point(lineStart.X, y);
                 }
             }
         }
-        else if (lineStart.X >= lineEnd.X && lineStart.Y >= lineEnd.Y)
+        else if (lineStart.Y == lineEnd.Y)
         {
-            for (var x = lineEnd.X; x <= lineStart.X; x++)
+            if (lineStart.X <= lineEnd.X)
             {
-                for (var y = lineEnd.Y; y <= lineStart.Y; y++)
+                for (var x = lineStart.X; x <= lineEnd.X; x++)
                 {
-                    yield return new Point(x, y);
+                    yield return new Point(x, lineStart.Y);
+                }
+            }
+            else
+            {
+                for (var x = lineStart.X; x >= lineEnd.X; x--)
+                {
+                    yield return new Point(x, lineStart.Y);
                 }
             }
         }

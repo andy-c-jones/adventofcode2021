@@ -26,22 +26,8 @@ public class DayFiveRunner
         var count = _calculator.CountWhereThereAreXOrGreaterVents(2, map);
         _writer.WriteLine($"Part One: {count.ToString()}");
 
-        var lines2 = await _reader.ReadLinesFrom(args[1]);
-        var map2 = _generator.CreateMap(lines2);
+        var map2 = _generator.CreateMap(lines);
         var count2 = _calculator.CountWhereThereAreXOrGreaterVents(2, map2);
         _writer.WriteLine($"Part Two: {count2.ToString()}");
-
-        //drawing small examples to understand bug
-        if (map2.GetLength(0) < 80)
-        {
-            for (int x = 0; x < map2.GetLength(0); x++)
-            {
-                for (int y = 0; y< map2.GetLength(1); y++)
-                {
-                    Console.Write(map2[y, x].NumberOfVents);
-                }
-                Console.WriteLine();
-            }
-        }
     }
 }
