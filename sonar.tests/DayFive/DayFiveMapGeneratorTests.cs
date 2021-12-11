@@ -5,7 +5,6 @@ namespace sonar.tests.DayFive;
 
 public class DayFiveMapGeneratorTests
 {
-    
     [Test]
     public void Should_draw_a_map_with_one_line()
     {
@@ -37,6 +36,7 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[1, 2].NumberOfVents, Is.EqualTo(0));
         });
     }
+
     [Test]
     public void Should_draw_a_map_with_value_of_how_many_lines_run_along_the_points()
     {
@@ -123,13 +123,13 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[9, 7].NumberOfVents, Is.EqualTo(1), "9, 7");
             Assert.That(map[8, 8].NumberOfVents, Is.EqualTo(1), "8, 8");
             Assert.That(map[7, 9].NumberOfVents, Is.EqualTo(1), "7, 9");
-            
+
             Assert.That(map[9, 7].NumberOfVents, Is.EqualTo(1), "4, 6");
             Assert.That(map[8, 8].NumberOfVents, Is.EqualTo(1), "5, 5");
             Assert.That(map[7, 9].NumberOfVents, Is.EqualTo(1), "6, 4");
         });
     }
-    
+
     [Test]
     public void Should_draw_a_map_with_diagonal_lines_left_right_bottom_to_top()
     {
@@ -148,7 +148,7 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[3, 3].NumberOfVents, Is.EqualTo(1), "3, 3");
         });
     }
-    
+
     [Test]
     public void Should_draw_a_map_with_diagonal_lines_right_left_top_to_bottom()
     {
@@ -167,7 +167,7 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[3, 3].NumberOfVents, Is.EqualTo(1), "3, 3");
         });
     }
-    
+
     [Test]
     public void Should_draw_a_map_with_diagonal_lines_left_right_top_to_bottom()
     {
@@ -186,7 +186,7 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[3, 0].NumberOfVents, Is.EqualTo(1), "3, 0");
         });
     }
-        
+
     [Test]
     public void Should_draw_a_map_with_diagonal_lines_right_left_bottom_to_top()
     {
@@ -194,7 +194,7 @@ public class DayFiveMapGeneratorTests
 
         var map = mapGenerator.CreateMap(new[]
         {
-            new Line( new Point(3, 0), new Point(0, 3)),
+            new Line(new Point(3, 0), new Point(0, 3)),
         });
 
         Assert.Multiple(() =>
@@ -205,7 +205,7 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[3, 0].NumberOfVents, Is.EqualTo(1), "3, 0");
         });
     }
-    
+
     [Test]
     public void Should_draw_a_map_with_diagonal_lines_again()
     {
@@ -213,7 +213,7 @@ public class DayFiveMapGeneratorTests
 
         var map = mapGenerator.CreateMap(new[]
         {
-            new Line( new Point(5, 5), new Point(8, 2)),
+            new Line(new Point(5, 5), new Point(8, 2)),
         });
 
         Assert.Multiple(() =>
@@ -224,7 +224,7 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[8, 2].NumberOfVents, Is.EqualTo(1), "8, 2");
         });
     }
-    
+
     [Test]
     public void Should_draw_a_map_with_diagonal_lines_again_and_again()
     {
@@ -232,7 +232,7 @@ public class DayFiveMapGeneratorTests
 
         var map = mapGenerator.CreateMap(new[]
         {
-            new Line( new Point(6, 4), new Point(2, 0)),
+            new Line(new Point(6, 4), new Point(2, 0)),
         });
 
         Assert.Multiple(() =>
@@ -243,5 +243,26 @@ public class DayFiveMapGeneratorTests
             Assert.That(map[3, 1].NumberOfVents, Is.EqualTo(1), "3, 1");
             Assert.That(map[2, 0].NumberOfVents, Is.EqualTo(1), "2, 0");
         });
-    }    
+    }
+
+    [Test]
+    public void Should_draw_a_map_with_diagonal_lines_again_and_again_and_again()
+    {
+        var mapGenerator = new DayFiveMapGenerator();
+
+        var map = mapGenerator.CreateMap(new[]
+        {
+            new Line(new Point(1, 3), new Point(6, 8)),
+        });
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(map[1, 3].NumberOfVents, Is.EqualTo(1), "1, 3");
+            Assert.That(map[2, 4].NumberOfVents, Is.EqualTo(1), "2, 4");
+            Assert.That(map[3, 5].NumberOfVents, Is.EqualTo(1), "3, 5");
+            Assert.That(map[4, 6].NumberOfVents, Is.EqualTo(1), "4, 6");
+            Assert.That(map[5, 7].NumberOfVents, Is.EqualTo(1), "5, 7");
+            Assert.That(map[6, 8].NumberOfVents, Is.EqualTo(1), "6, 8");
+        });
+    }
 }
