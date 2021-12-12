@@ -6,12 +6,11 @@ export function run(filePath: string, daysToPass: number): number {
     let lanternFish = readFish(filePath);
     for (let i = 0; i < daysToPass; i++) {
         lanternFish = executeDay(lanternFish);
-        // write(lanternFish.toString())
     }
-    return lanternFish.length;
-}
 
-//
-// export function write(output: string) {
-//     console.log(output);
-// }
+    let count = 0;
+    for (let fish of lanternFish) {
+        count = count + fish.amountOfFishRepresented;
+    }
+    return count;
+}

@@ -5,18 +5,28 @@ import {run} from "./day6";
 
 describe("Run", () => {
     let initialFish = [
-        {daysUntilNewFish: 0}, {daysUntilNewFish: 0}
+        {
+            amountOfFishRepresented: 1,
+            daysUntilNewFish: 0
+        },
+        {
+            amountOfFishRepresented: 1,
+            daysUntilNewFish: 0
+        }
     ];
     let readFish = jest.spyOn(reader, "readFish").mockReturnValueOnce(initialFish);
 
     let dayOneFish = [
-        {daysUntilNewFish: 1}, {daysUntilNewFish: 2}
+        {amountOfFishRepresented: 1, daysUntilNewFish: 1}, {amountOfFishRepresented: 1, daysUntilNewFish: 2}
     ];
     let dayTwoFish = [
-        {daysUntilNewFish: 3}, {daysUntilNewFish: 4}
+        {amountOfFishRepresented: 1, daysUntilNewFish: 3}, {amountOfFishRepresented: 1, daysUntilNewFish: 4}
     ];
     let dayThreeFish = [
-        {daysUntilNewFish: 5}, {daysUntilNewFish: 6}, {daysUntilNewFish: 6}, {daysUntilNewFish: 6}
+        {amountOfFishRepresented: 1, daysUntilNewFish: 5}, {
+            amountOfFishRepresented: 1,
+            daysUntilNewFish: 6
+        }, {amountOfFishRepresented: 1, daysUntilNewFish: 6}, {amountOfFishRepresented: 1, daysUntilNewFish: 6}
     ];
     let executeDay = jest.spyOn(day, "executeDay")
         .mockReturnValueOnce(dayOneFish)
@@ -46,8 +56,18 @@ describe("Run the input", () => {
         expect(result).toBe(5934);
     });
 
+    it("should calculate part two", () => {
+        let result = run('day6/testInput.txt', 256);
+        expect(result).toBe(26984457539);
+    });
+
     it("should run my days input", () => {
         let result = run('day6/day6Input.txt', 80);
         expect(result).toBe(352195);
+    });
+
+    it("should run my days input against part two", () => {
+        let result = run('day6/day6Input.txt', 256);
+        expect(result).toBe(1600306001288);
     });
 });
