@@ -1,28 +1,17 @@
-import * as fs from 'fs';
-
-const spawnRateInDays = 6;
-const numberOfDaysAsJuvenile = 2;
-
-type LanternFish = {
-    daysUntilNewFish: number
-};
+import {readFish} from "./reader";
+import {executeDay} from "./day";
 
 
-function createNewFish(): LanternFish {
-    return {daysUntilNewFish: spawnRateInDays + numberOfDaysAsJuvenile}
+export function run(filePath: string, daysToPass: number): number {
+    let lanternFish = readFish(filePath);
+    for (let i = 0; i < daysToPass; i++) {
+        lanternFish = executeDay(lanternFish);
+        // write(lanternFish.toString())
+    }
+    return lanternFish.length;
 }
 
-export function readFish(filePath: string): LanternFish[] {
-    return fs.readFileSync(filePath, 'utf8')
-        .split(',')
-        .map(n => ({daysUntilNewFish: Number(n)}));
-}
-
-export function executeDay(existingFish: LanternFish[]): LanternFish[] {
-    return existingFish.map(f => ({daysUntilNewFish: f.daysUntilNewFish - 1}));
-}
-
-export function Run(filePath: string): number {
-
-    return 0;
-}
+//
+// export function write(output: string) {
+//     console.log(output);
+// }
