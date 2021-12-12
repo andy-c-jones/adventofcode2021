@@ -21,10 +21,13 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: ${{env.working-directory}}
     - name: Build
       run: dotnet build --no-restore
+      working-directory: ${{env.working-directory}}
     - name: Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ${{env.working-directory}}
 
   typescript:
 
@@ -34,5 +37,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: npm install
-    - run: npm test
+    - name: Install dependencies
+      run: npm install
+      working-directory: ${{env.working-directory}}
+    - name: Test
+      run: npm test
+      working-directory: ${{env.working-directory}}
