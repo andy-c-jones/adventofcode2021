@@ -1,8 +1,13 @@
 import {readCrabPositions} from "./reader";
-import {calculate} from "./crabs";
+import {calculatePartOne, calculatePartTwo} from "./crabs";
 
 
-export function run(filePath: string){
+export function runPartOne(filePath: string){
     let numbers = readCrabPositions(filePath);
-    return calculate(numbers)
+    return calculatePartOne(numbers)
+}
+
+export function runPartTwo(filePath: string){
+    let numbers = readCrabPositions(filePath);
+    return calculatePartTwo(numbers)
 }

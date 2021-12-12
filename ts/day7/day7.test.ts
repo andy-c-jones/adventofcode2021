@@ -1,6 +1,6 @@
-import {run} from "./day7";
+import {runPartOne, runPartTwo} from "./day7";
 
-describe("median", () => {
+describe("runPartOne", () => {
 
     let cases = [
         {filePath: "day7/testInput.txt", expected: 37},
@@ -8,8 +8,23 @@ describe("median", () => {
     ];
 
     for (const input of cases) {
-        it("should return ", () => {
-            let actual = run(input.filePath);
+        it("should return answer to part one", () => {
+            let actual = runPartOne(input.filePath);
+            expect(actual).toBe(input.expected);
+        });
+    }
+});
+
+describe("runPartTwo", () => {
+
+    let cases = [
+        {filePath: "day7/testInput.txt", expected: 168},
+        {filePath: "day7/day7Input.txt", expected: 98905973},
+    ];
+
+    for (const input of cases) {
+        it("should return answer to part two", () => {
+            let actual = runPartTwo(input.filePath);
             expect(actual).toBe(input.expected);
         });
     }
