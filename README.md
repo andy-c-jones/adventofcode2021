@@ -39,8 +39,8 @@ cd csharp
 dotnet sonar/bin/Debug/net6.0/sonar.dll day5 "./sonar/bin/Debug/net6.0/Inputs/day5Input.txt"
 ```
 
-## Day Six
-On day 6 I switched to Typescript to calculate lantern fish!
+## Day Six+
+On day 6 I switched to Typescript to calculate lantern fish and used tests to feed in each days input.
 ```
 cd ts
 npm install
