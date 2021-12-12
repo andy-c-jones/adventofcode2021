@@ -6,20 +6,44 @@ Join in at https://adventofcode.com
 
 Run `./precommit.sh`
 
-# To run with input file
-
 
 ## Day One
 To calculate depth increases:
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day1 "./sonar/bin/Debug/net6.0/Inputs/day1Input.txt"`
+```
+cd csharp
+dotnet sonar/bin/Debug/net6.0/sonar.dll day1 "./sonar/bin/Debug/net6.0/Inputs/day1Input.txt"
+```
 
 ## Day Two
 To move a submarine:
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day2 "./sonar/bin/Debug/net6.0/Inputs/day2Input.txt"`
+```
+cd csharp
+dotnet sonar/bin/Debug/net6.0/sonar.dll day2 "./sonar/bin/Debug/net6.0/Inputs/day2Input.txt"
+```
 
 ## Day Three
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day3 "./sonar/bin/Debug/net6.0/Inputs/day3Input.txt"`
+```
+cd csharp
+dotnet sonar/bin/Debug/net6.0/sonar.dll day3 "./sonar/bin/Debug/net6.0/Inputs/day3Input.txt"
+```
 
 ## Day Four
-`dotnet sonar/bin/Debug/net6.0/sonar.dll day4 "./sonar/bin/Debug/net6.0/Inputs/day4Input.txt"`
+```
+cd csharp
+dotnet sonar/bin/Debug/net6.0/sonar.dll day4 "./sonar/bin/Debug/net6.0/Inputs/day4Input.txt"
+```
+
+## Day Five
+```
+cd csharp
+dotnet sonar/bin/Debug/net6.0/sonar.dll day5 "./sonar/bin/Debug/net6.0/Inputs/day5Input.txt"
+```
+
+## Day Six
+On day 6 I switched to Typescript to calculate lantern fish!
+```
+cd ts
+npm install
+npm test
+```
 
